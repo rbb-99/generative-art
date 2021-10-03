@@ -1,10 +1,10 @@
 use nannou::prelude::*;
 
-struct Model {}
-
 pub fn run() {
     nannou::app(model).event(event).simple_window(view).run();
 }
+
+struct Model {}
 
 fn model(_app: &App) -> Model {
     Model {}
@@ -16,9 +16,11 @@ fn view(app: &App, _model: &Model, frame: Frame) {
     let draw=app.draw();
     draw.background().color(PLUM);
 
+    let time=app.elapsed_frames() as f32 /60.0;
+
     for i in 0..10{
-        let angle=i as f32 * 0.1 * TAU;
-        draw.ellipse().x_y(100.0*angle.cos(),100.0*angle.sin()).color(STEELBLUE);
+        let angle=i as f32 * 0.1 * TAU+time;
+        draw.ellipse().x_y(200.0*angle.cos(),200.0*angle.sin()).color(STEELBLUE);
     }
     draw.to_frame(app,&frame).unwrap();
 }
