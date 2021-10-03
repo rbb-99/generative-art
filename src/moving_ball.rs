@@ -2,7 +2,7 @@ use nannou::prelude::*;
 
 struct Model {}
 
-pub fn main() {
+pub fn run() {
     nannou::app(model).event(event).simple_window(view).run();
 }
 
